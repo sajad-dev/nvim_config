@@ -13,3 +13,25 @@ end
 
 vim.keymap.set("n", "<C-j>", ToggleTerminal, { noremap = true, silent = true })
 
+vim.keymap.set('n', '<Left>', function()
+  local col = vim.fn.col('.')
+  local line = vim.fn.line('.')
+  
+  if col == 1 and line > 1 then
+    vim.cmd('normal! k$') 
+  else
+    vim.cmd('normal! h') 
+  end
+end, { noremap = true, silent = true })
+
+vim.keymap.set('n', '<Right>', function()
+  local col = vim.fn.col('.')
+  local line = vim.fn.line('.')
+  local total_lines = vim.fn.line('$')
+  
+  if col == vim.fn.col('$') - 1 and line < total_lines then
+    vim.cmd('normal! j0')
+  else
+    vim.cmd('normal! l') 
+  end
+end, { noremap = true, silent = true })
