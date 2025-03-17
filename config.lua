@@ -5,3 +5,15 @@ dofile("/home/sajad/Documents/Programming/nvim_config/keymap.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/theme.lua")
 
 vim.opt.number = true
+
+vim.opt.updatetime = 3000
+
+vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI", "TextChanged", "TextChangedI"}, {
+    pattern = "*",
+    callback = function()
+        -- بررسی وجود نام فایل و قابل نوشتن بودن بافر
+        if vim.bo.modifiable and vim.fn.expand("%") ~= "" then
+            vim.cmd("silent! update") -- ذخیره بدون نمایش پیام
+        end
+    end
+})

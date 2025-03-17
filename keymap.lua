@@ -23,7 +23,6 @@ vim.keymap.set('n', '<Left>', function()
     vim.cmd('normal! h') 
   end
 end, { noremap = true, silent = true })
-
 vim.keymap.set('n', '<Right>', function()
   local col = vim.fn.col('.')
   local line = vim.fn.line('.')

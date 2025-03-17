@@ -7,7 +7,4 @@ require'nvim-treesitter.configs'.setup {
 }
 
 vim.opt.termguicolors = true 
-
-
-
-
+--
