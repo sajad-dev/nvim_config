@@ -5,13 +5,18 @@ require('packer').startup(function()
     "nvim-tree/nvim-tree.lua",
     requires = { "nvim-tree/nvim-web-devicons" } 
   }
-  
+ use {
+  "windwp/nvim-autopairs",
+  config = function()
+    require("nvim-autopairs").setup {}
+  end
+}
   use 'tpope/vim-sensible'
   use 'vim-airline/vim-airline'
   use 'neovim/nvim-lspconfig'
   use 'morhetz/gruvbox'  
   use 'nvim-treesitter/nvim-treesitter'
-
+  use "stevearc/conform.nvim"
   use {
     'hrsh7th/nvim-cmp',
     requires = {

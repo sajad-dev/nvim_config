@@ -34,3 +34,5 @@ vim.keymap.set('n', '<Right>', function()
     vim.cmd('normal! l') 
   end
 end, { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-f>', ':lua require("conform").format()<CR>', { noremap = true, silent = true })
+

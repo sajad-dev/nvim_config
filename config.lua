@@ -3,6 +3,7 @@ dofile("/home/sajad/Documents/Programming/nvim_config/packer.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/nvim-tree.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/keymap.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/theme.lua")
+dofile("/home/sajad/Documents/Programming/nvim_config/formatter.lua")
 
 vim.opt.number = true
 
@@ -11,9 +12,8 @@ vim.opt.updatetime = 3000
 vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI", "TextChanged", "TextChangedI"}, {
     pattern = "*",
     callback = function()
-        -- بررسی وجود نام فایل و قابل نوشتن بودن بافر
         if vim.bo.modifiable and vim.fn.expand("%") ~= "" then
-            vim.cmd("silent! update") -- ذخیره بدون نمایش پیام
+            vim.cmd("silent! update") 
         end
     end
 })
