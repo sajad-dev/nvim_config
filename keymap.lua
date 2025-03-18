@@ -29,6 +29,7 @@ vim.keymap.set('n', '<Right>', function()
   local total_lines = vim.fn.line('$')
   
   if col == vim.fn.col('$') - 1 and line < total_lines then
+
     vim.cmd('normal! j0')
   else
     vim.cmd('normal! l') 
@@ -36,3 +37,5 @@ vim.keymap.set('n', '<Right>', function()
 end, { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-f>', ':lua require("conform").format()<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<C-b>', ':Commentary<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-b>', ':Commentary<CR>', { noremap = true, silent = true })

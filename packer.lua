@@ -11,6 +11,8 @@ require('packer').startup(function()
     require("nvim-autopairs").setup {}
   end
 }
+  use 'tpope/vim-commentary'
+
   use 'tpope/vim-sensible'
   use 'vim-airline/vim-airline'
   use 'neovim/nvim-lspconfig'
