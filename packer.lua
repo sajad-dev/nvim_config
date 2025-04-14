@@ -1,24 +1,70 @@
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
-  
+use {
+  'pmizio/typescript-tools.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim',
+    'neovim/nvim-lspconfig',
+  }
+}  
+  -- File Explorer
   use {
     "nvim-tree/nvim-tree.lua",
     requires = { "nvim-tree/nvim-web-devicons" } 
   }
- use {
-  "windwp/nvim-autopairs",
-  config = function()
-    require("nvim-autopairs").setup {}
-  end
-}
-  use 'tpope/vim-commentary'
 
+  -- Auto Pairs
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
+
+  -- Essentials
+  use 'tpope/vim-commentary'
   use 'tpope/vim-sensible'
   use 'vim-airline/vim-airline'
+  use 'tpope/vim-fugitive'
+
+  -- LSP
   use 'neovim/nvim-lspconfig'
-  use 'morhetz/gruvbox'  
-  use 'nvim-treesitter/nvim-treesitter'
-  use "stevearc/conform.nvim"
+  use {
+    'pmizio/typescript-tools.nvim', -- جایگزین tsserver
+    requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }
+  }
+  use {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+  }
+
+  -- Colorscheme
+  use 'morhetz/gruvbox'
+
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
+  -- Formatting
+  use {
+    "stevearc/conform.nvim",
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          python = { "black" },
+          javascript = { { "prettierd", "prettier" } },
+          typescript = { { "prettierd", "prettier" } },
+          c = { "clang-format" },
+          cpp = { "clang-format" },
+        },
+      })
+    end
+  }
+
+  -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -26,10 +72,8 @@ require('packer').startup(function()
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip'
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind.nvim'
     }
   }
-  
-  use 'tpope/vim-fugitive'
 end)
-
