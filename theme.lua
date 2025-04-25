@@ -7,4 +7,5 @@ require'nvim-treesitter.configs'.setup {
 }
 
 vim.opt.termguicolors = true 
---
+
+vim.o.background = "light" -- or "light" for light mode

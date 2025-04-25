@@ -1,7 +1,14 @@
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
+  use { "ellisonleao/gruvbox.nvim" }
+  use {
+    'EdenEast/nightfox.nvim', -- nightfox plugin
+    config = function()
+      -- Set the dayfox theme
+      vim.cmd("colorscheme dayfox")
+    end
+  }
 use {
-  'pmizio/typescript-tools.nvim',
   requires = {
     'nvim-lua/plenary.nvim',
     'neovim/nvim-lspconfig',
