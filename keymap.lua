@@ -39,3 +39,25 @@ vim.api.nvim_set_keymap('n', '<C-f>', ':lua require("conform").format()<CR>', { 
 
 vim.api.nvim_set_keymap('n', '<C-b>', ':Commentary<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-b>', ':Commentary<CR>', { noremap = true, silent = true })
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+local ok, spectre = pcall(require, 'spectre')
+if not ok then
+  return
+end
+
+vim.keymap.set('n', '<leader>Z', function()
+  spectre.open()
+end, { desc = 'Open Spectre' })
+
+vim.keymap.set('n', '<leader>zw', function()
+  spectre.open_visual({ select_word = true })
+end, { desc = 'Spectre search word' })
+
+vim.keymap.set('n', '<leader>zf', function()
+  spectre.open_file_search()
+end, { desc = 'Spectre in current file' })
+
+vim.keymap.set('n', '<leader>fg', "<cmd>Telescope live_grep<cr>", { desc = 'Live Grep' })
+vim.keymap.set('n', '<leader>ff', "<cmd>Telescope find_files<cr>", { desc = 'Find Files' })
+

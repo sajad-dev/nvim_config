@@ -53,7 +53,15 @@ use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
-
+use {
+  'nvim-telescope/telescope.nvim',
+  tag = '0.1.5',
+  requires = { {'nvim-lua/plenary.nvim'} }
+}
+use {
+  'nvim-pack/nvim-spectre',
+  requires = { 'nvim-lua/plenary.nvim' },
+}
   -- Formatting
   use {
     "stevearc/conform.nvim",
