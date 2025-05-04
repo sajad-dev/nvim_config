@@ -14,6 +14,10 @@ use {
     'neovim/nvim-lspconfig',
   }
 }  
+use {
+  "folke/which-key.nvim"
+
+}
   -- File Explorer
   use {
     "nvim-tree/nvim-tree.lua",
