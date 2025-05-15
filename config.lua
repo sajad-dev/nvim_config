@@ -4,6 +4,7 @@ dofile("/home/sajad/Documents/Programming/nvim_config/nvim-tree.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/keymap.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/theme.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/formatter.lua")
+dofile("/home/sajad/Documents/Programming/nvim_config/help.lua")
 
 vim.opt.number = true
 

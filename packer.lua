@@ -3,10 +3,7 @@ require('packer').startup(function()
   use { "ellisonleao/gruvbox.nvim" }
   use {
     'EdenEast/nightfox.nvim', -- nightfox plugin
-    config = function()
-      -- Set the dayfox theme
-      vim.cmd("colorscheme dayfox")
-    end
+     
   }
 use {
   requires = {
@@ -14,10 +11,7 @@ use {
     'neovim/nvim-lspconfig',
   }
 }  
-use {
-  "folke/which-key.nvim"
 
-}
   -- File Explorer
   use {
     "nvim-tree/nvim-tree.lua",
