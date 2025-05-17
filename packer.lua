@@ -8,11 +8,7 @@ require('packer').startup(function(use)
   use { 'EdenEast/nightfox.nvim' }
 
   -- LSP و Dependency ها
-  use {
-    'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig.nvim',
-  }
-  use 'mhartington/formatter.nvim'
+
   use 'neovim/nvim-lspconfig'
 
   -- Typescript Tools (جایگزین tsserver)
@@ -63,21 +59,6 @@ require('packer').startup(function(use)
   -- Formatting (Prettier, Black, Stylua و ...)
   use {
     "stevearc/conform.nvim",
-    config = function()
-      require("conform").setup({
-        formatters_by_ft = {
-          lua = { "stylua" },
-          python = { "black" },
-          javascript = { { "prettierd", "prettier" } },
-          typescript = { { "prettierd", "prettier" } },
-          tsx = { { "prettierd", "prettier" } },
-          jsx = { { "prettierd", "prettier" } },
-          c = { "clang-format" },
-          cpp = { "clang-format" },
-        },
-        format_on_save = true, -- اگر میخوای فرمت خودکار روی سیو باشه
-      })
-    end
   }
 
   -- Autocompletion
