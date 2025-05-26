@@ -61,3 +61,5 @@ end, { desc = 'Spectre in current file' })
 vim.keymap.set('n', '<leader>fg', "<cmd>Telescope live_grep<cr>", { desc = 'Live Grep' })
 vim.keymap.set('n', '<leader>ff', "<cmd>Telescope find_files<cr>", { desc = 'Find Files' })
 
+vim.keymap.set("v", "<leader>y", '"+y') 
+vim.keymap.set("n", "<leader>y", '"+yy') 

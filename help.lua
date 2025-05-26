@@ -17,5 +17,17 @@ print([[
 	NVIM TREE:
 	Cntrl+v Split Vertical 
 	Cntrl+x Split Horizontal 
+
+	REMOVE HILIGHT
+	:noh command remove HILIGHT
+
+	INSERT MOD SHORTCUT:
+	Ctrl-r+" Paste
+	Ctrl-r+ (0-9) Paste from registery defualt
+	Cntrl-r+ (a-z) for paste registry custom
+	Cntrl-r++ Paste from system clipboard
+	<leader>y Copy in system clipboard
+
+	Cntrl-o (command like u , x , ... )
 ]])
 end, {})
