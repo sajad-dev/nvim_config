@@ -63,3 +63,46 @@ vim.keymap.set('n', '<leader>ff', "<cmd>Telescope find_files<cr>", { desc = 'Fin
 
 vim.keymap.set("v", "<leader>y", '"+y') 
 vim.keymap.set("n", "<leader>y", '"+yy') 
+
+--Helpers 
+vim.keymap.set("n", "<leader>kp", ":KillPort<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>kj", ":JupyterInstallTools<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>kq", ":JupyterNotebook<CR>", { noremap = true, silent = true })
+
+-- Server
+vim.keymap.set("n", "<leader>js", ":JupyniumStartAndAttachToServer<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jt", ":JupyniumStartAndAttachToServerInTerminal<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ja", ":JupyniumAttachToServer<CR>", { noremap = true, silent = true })
+
+-- Sync
+vim.keymap.set("n", "<leader>jS", ":JupyniumStartSync<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jX", ":JupyniumStopSync<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jl", ":JupyniumLoadFromIpynbTab<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jL", ":JupyniumLoadFromIpynbTabAndStartSync<CR>", { noremap = true, silent = true })
+
+-- Notebook (while syncing)
+vim.keymap.set("n", "<leader>jw", ":JupyniumSaveIpynb<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jd", ":JupyniumDownloadIpynb<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jD", ":JupyniumAutoDownloadIpynbToggle<CR>", { noremap = true, silent = true })
+
+-- Scrolling
+vim.keymap.set("n", "<leader>jc", ":JupyniumScrollToCell<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jk", ":JupyniumScrollUp<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jj", ":JupyniumScrollDown<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jA", ":JupyniumAutoscrollToggle<CR>", { noremap = true, silent = true })
+
+-- Cells
+vim.keymap.set("n", "<leader>je", ":JupyniumExecuteSelectedCells<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jo", ":JupyniumClearSelectedCellsOutputs<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jO", ":JupyniumToggleSelectedCellsOutputsScroll<CR>", { noremap = true, silent = true })
+
+-- Kernel
+vim.keymap.set("n", "<leader>jR", ":JupyniumKernelRestart<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jI", ":JupyniumKernelInterrupt<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jK", ":JupyniumKernelSelect<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jH", ":JupyniumKernelHover<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>jT", ":JupyniumKernelOpenInTerminal<CR>", { noremap = true, silent = true })
+
+-- Highlight
+vim.keymap.set("n", "<leader>jh", ":JupyniumShortsightedToggle<CR>", { noremap = true, silent = true })
+

@@ -1,38 +1,55 @@
--- local cmp = require "cmp"
--- local compare = cmp.config.compare
+vim.api.nvim_create_user_command("JupyterInstallTools", function()
+  vim.fn.jobstart({"pip", "install", "jupynium", "jupytext", "notebook", "selenium"}, {
+    stdout_buffered = true,
+    on_stdout = function(_, data)
+      if data then
+        for _, line in ipairs(data) do
+          print(line)
+        end
+      end
+    end,
+    on_stderr = function(_, data)
+      if data then
+        for _, line in ipairs(data) do
+          vim.api.nvim_err_writeln(line)
+        end
+      end
+    end,
+  })
+end, {})
 
--- cmp.setup {
---   sources = {
---     { name = "jupynium", priority = 1000 },  -- consider higher priority than LSP
---     { name = "nvim_lsp", priority = 100 },
---     -- ...
---   },
---   sorting = {
---     priority_weight = 1.0,
---     comparators = {
---       compare.score,            -- Jupyter kernel completion shows prior to LSP
---       compare.recently_used,
---       compare.locality,
---       -- ...
---     },
---   },
--- }
+vim.api.nvim_create_user_command("KillPort", function(opts)
+  local port = opts.args
+  if port == "" then
+    print("❗ Please provide a port number.")
+    return
+  end
 
--- require("blink.cmp").setup {
---   sources = {
---     default = {
---       "jupynium",
---       -- ...
---     },
---     providers = {
---       jupynium = {
---         name = "Jupynium",
---         module = "jupynium.blink_cmp",
---         -- Consider higher priority than LSP
---         score_offset = 100,
---       },
---       -- ...
---     },
---   },
--- }
--- require("jupynium").get_folds()
+  -- For Unix-based systems (Linux/macOS)
+  local cmd = string.format("lsof -ti :%s | xargs kill -9", port)
+  os.execute(cmd)
+  print("✅ Port " .. port .. " has been killed (if any process was using it).")
+end, {
+  nargs = 1,
+  desc = "Kill the process using the specified port",
+})
+
+vim.api.nvim_create_user_command("JupyterNotebook", function()
+  local handle = io.popen("lsof -ti:8888")
+  local pid = handle:read("*a")
+  handle:close()
+
+  if pid ~= "" then
+    os.execute("kill -9 " .. pid)
+  end
+
+  vim.defer_fn(function()
+    local result = vim.fn.jobstart({"jupyter", "notebook"}, {
+      detach = true,
+    })
+
+
+  end, 2000) 
+
+end, {})
+

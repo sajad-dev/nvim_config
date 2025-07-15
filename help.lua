@@ -30,6 +30,46 @@ print([[
 
 	Cntrl-o (command like u , x , ... )
 
+	JUPYNIUM SERVER:
+	<leader>kp  :KillPort
+	<leader>kj  :JupyterInstallTools
+	<leader>kq  :JupyterNotebook
+	<leader>js  Start and attach to server
+	<leader>jt  Start and attach to server in terminal (debug)
+	<leader>ja  Attach to existing server
+
+	JUPYNIUM SYNC:
+	<leader>jS  Start sync (by filename or tab index)
+	<leader>jX  Stop sync
+	<leader>jl  Load from .ipynb tab
+	<leader>jL  Load from .ipynb tab and start sync
+
+	JUPYNIUM NOTEBOOK:
+	<leader>jw  Save .ipynb file
+	<leader>jd  Download .ipynb file
+	<leader>jD  Toggle auto download .ipynb
+
+	JUPYNIUM SCROLL:
+	<leader>jc  Scroll to current cell
+	<leader>jk  Scroll up
+	<leader>jj  Scroll down
+	<leader>jA  Toggle autoscroll
+
+	JUPYNIUM CELLS:
+	<leader>je  Execute selected cells
+	<leader>jo  Clear selected cells outputs
+	<leader>jO  Toggle scroll of selected cells outputs
+
+	JUPYNIUM KERNEL:
+	<leader>jR  Restart kernel
+	<leader>jI  Interrupt kernel
+	<leader>jK  Select kernel
+	<leader>jH  Kernel hover (like LSP hover)
+	<leader>jT  Open kernel in terminal
+
+	JUPYNIUM HIGHLIGHT:
+	<leader>jh  Toggle shortsighted highlight
+
 	IRON :
 	<space>rr       Toggle REPL
 	<space>rR       Restart REPL
