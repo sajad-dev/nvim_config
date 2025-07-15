@@ -5,6 +5,8 @@ dofile("/home/sajad/Documents/Programming/nvim_config/keymap.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/theme.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/formatter.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/help.lua")
+dofile("/home/sajad/Documents/Programming/nvim_config/iron.lua")
+dofile("/home/sajad/Documents/Programming/nvim_config/jupyter.lua")
 
 vim.opt.number = true
 

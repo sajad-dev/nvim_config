@@ -1,35 +1,53 @@
 require('packer').startup(function(use)
-  -- Packer خودکار
   use 'wbthomason/packer.nvim'
 
-  -- Colorschemes
+-- use {
+--   "lukas-reineke/blink.nvim",
+--   config = function()
+--     require("blink").setup()
+--   end,
+-- }
+
+
+  use {
+    "kiyoon/jupynium.nvim",
+    run = "pip3 install --user jupytext nbconvert",
+    requires = {
+      "rcarriga/nvim-notify",
+      "stevearc/dressing.nvim",
+    },
+    --ft = { "python", "ipynb" ,"json"},
+    config = function()
+      require("jupynium").setup({})
+    end,
+  }
+
+  use "rcarriga/nvim-notify"
+  use "stevearc/dressing.nvim"
+
   use { "ellisonleao/gruvbox.nvim" }
   use 'morhetz/gruvbox'
   use { 'EdenEast/nightfox.nvim' }
 
-  -- LSP و Dependency ها
+  use {'Vigemus/iron.nvim'}
 
   use 'neovim/nvim-lspconfig'
 
-  -- Typescript Tools (جایگزین tsserver)
   use {
     'pmizio/typescript-tools.nvim',
     requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
   }
 
-  -- Treesitter (برای syntax highlight بهتر مخصوصا JSX/TSX)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
   }
 
-  -- File Explorer
   use {
     "nvim-tree/nvim-tree.lua",
     requires = { "nvim-tree/nvim-web-devicons" }
   }
 
-  -- Autopairs
   use {
     "windwp/nvim-autopairs",
     config = function()
@@ -37,31 +55,26 @@ require('packer').startup(function(use)
     end
   }
 
-  -- Essentials
   use 'tpope/vim-commentary'
   use 'tpope/vim-sensible'
   use 'vim-airline/vim-airline'
   use 'tpope/vim-fugitive'
 
-  -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- Search & Replace better
   use {
     'nvim-pack/nvim-spectre',
     requires = { 'nvim-lua/plenary.nvim' },
   }
 
-  -- Formatting (Prettier, Black, Stylua و ...)
   use {
     "stevearc/conform.nvim",
   }
 
-  -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -74,8 +87,6 @@ require('packer').startup(function(use)
     }
   }
 
-  -- Plenary و LSPConfig را به صورت مستقل هم داشته باش
   use 'nvim-lua/plenary.nvim'
-  use 'neovim/nvim-lspconfig'
 end)
 

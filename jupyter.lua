@@ -1,0 +1,38 @@
+-- local cmp = require "cmp"
+-- local compare = cmp.config.compare
+
+-- cmp.setup {
+--   sources = {
+--     { name = "jupynium", priority = 1000 },  -- consider higher priority than LSP
+--     { name = "nvim_lsp", priority = 100 },
+--     -- ...
+--   },
+--   sorting = {
+--     priority_weight = 1.0,
+--     comparators = {
+--       compare.score,            -- Jupyter kernel completion shows prior to LSP
+--       compare.recently_used,
+--       compare.locality,
+--       -- ...
+--     },
+--   },
+-- }
+
+-- require("blink.cmp").setup {
+--   sources = {
+--     default = {
+--       "jupynium",
+--       -- ...
+--     },
+--     providers = {
+--       jupynium = {
+--         name = "Jupynium",
+--         module = "jupynium.blink_cmp",
+--         -- Consider higher priority than LSP
+--         score_offset = 100,
+--       },
+--       -- ...
+--     },
+--   },
+-- }
+-- require("jupynium").get_folds()

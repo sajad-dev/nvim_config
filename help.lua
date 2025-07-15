@@ -29,5 +29,24 @@ print([[
 	<leader>y Copy in system clipboard
 
 	Cntrl-o (command like u , x , ... )
+
+	IRON :
+	<space>rr       Toggle REPL
+	<space>rR       Restart REPL
+	<space>sf       Send full file to REPL
+	<space>sl       Send current line to REPL
+	<space>sp       Send current paragraph/block to REPL
+	<space>sc       Send motion or visual selection to REPL
+	<space>su       Send code from top to cursor
+	<space>sb       Send current code block
+	<space>sn       Send code block and move to next
+	<space>sm       Send marked text
+	<space>mc       Mark motion or visual
+	<space>md       Delete mark
+	<space>s<CR>    Send <Enter> to REPL
+	<space>s<space> Interrupt REPL
+	<space>sq       Exit REPL
+	<space>cl       Clear REPL screen
+
 ]])
 end, {})
