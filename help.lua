@@ -30,6 +30,8 @@ print([[
 
 	Cntrl-o (command like u , x , ... )
 
+	Install tools :pip install jupynium jupytext notebook selenium
+
 	JUPYNIUM SERVER:
 	<leader>kp  :KillPort
 	<leader>kj  :JupyterInstallTools
@@ -90,3 +92,4 @@ print([[
 
 ]])
 end, {})
+
