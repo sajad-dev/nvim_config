@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local typescript_tools = require('typescript-tools')
-
+local util = require('lspconfig.util')
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
 local on_attach = function(client, bufnr)
@@ -9,13 +9,11 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- می‌تونی اینجا کلید میانبرهای دیگه مثل rename و code action هم اضافه کنی
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
--- LSP های عمومی
-local servers = { "gopls", "rust_analyzer", "pyright", "intelephense", "clangd" }
+local servers = { "gopls", "rust_analyzer", "intelephense", "clangd" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     capabilities = capabilities,
@@ -23,21 +21,19 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- LSP مخصوص TypeScript / React
 typescript_tools.setup {
   server = {
     capabilities = capabilities,
     on_attach = on_attach,
-    -- هر تنظیم اضافی دیگه مثل تنظیمات مخصوص React/JSX اینجا اضافه میشه
     settings = {
       documentFormatting = true,
-      -- enable JSX/TSX support
       jsxCompletion = true,
     }
   },
 }
 
--- nvim-cmp برای کامپلیشن
+
+
 local cmp = require'cmp'
 local luasnip = require'luasnip'
 
@@ -79,4 +75,33 @@ cmp.setup({
     format = require('lspkind').cmp_format({ with_text = true, maxwidth = 50 }),
   },
 })
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+})
+
+lspconfig.pylsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = true,
+          maxLineLength = 100,
+        },
+        pylint = { enabled = false },
+        flake8 = { enabled = false },
+        mccabe = { enabled = false },
+        yapf = { enabled = false },
+        autopep8 = { enabled = false },
+        black = { enabled = true },
+        rope_autoimport = { enabled = true },
+        pyls_mypy = { enabled = true, live_mode = false },
+      },
+    },
+  },
+}
 

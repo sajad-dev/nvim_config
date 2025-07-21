@@ -1,5 +1,5 @@
-dofile("/home/sajad/Documents/Programming/nvim_config/autocomplete.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/packer.lua")
+dofile("/home/sajad/Documents/Programming/nvim_config/autocomplete.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/nvim-tree.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/keymap.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/theme.lua")
@@ -7,6 +7,9 @@ dofile("/home/sajad/Documents/Programming/nvim_config/formatter.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/help.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/iron.lua")
 dofile("/home/sajad/Documents/Programming/nvim_config/jupyter.lua")
+
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 vim.opt.number = true
 
@@ -20,3 +23,4 @@ vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI", "TextChanged", "TextCh
         end
     end
 })
+

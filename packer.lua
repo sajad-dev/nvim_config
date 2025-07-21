@@ -1,4 +1,10 @@
 require('packer').startup(function(use)
+	use({
+  "L3MON4D3/LuaSnip",
+  tag = "v2.*", -- Ersätt med aktuell version
+  run = "make install_jsregexp"
+})
+
   use 'wbthomason/packer.nvim'
 
 -- use {
