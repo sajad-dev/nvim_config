@@ -100,6 +100,7 @@ lspconfig.pylsp.setup {
         black = { enabled = true },
         rope_autoimport = { enabled = true },
         pyls_mypy = { enabled = true, live_mode = false },
+	jedi_completion = { enabled = true }, 
       },
     },
   },
