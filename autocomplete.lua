@@ -85,6 +85,13 @@ vim.diagnostic.config({
 lspconfig.pylsp.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  on_init = function(client)
+    local path = client.config.root_dir
+    -- اضافه کردن مسیر پروژه به PYTHONPATH
+    vim.env.PYTHONPATH = path .. ":" .. (vim.env.PYTHONPATH or "")
+    -- تنظیم workspaceFolders برای اطمینان از شناسایی درست پروژه
+    client.config.workspace_folders = { { uri = vim.uri_from_fname(path), name = "workspace" } }
+  end,
   settings = {
     pylsp = {
       plugins = {
@@ -100,7 +107,7 @@ lspconfig.pylsp.setup {
         black = { enabled = true },
         rope_autoimport = { enabled = true },
         pyls_mypy = { enabled = true, live_mode = false },
-	jedi_completion = { enabled = true }, 
+        jedi_completion = { enabled = true, include_params = true },
       },
     },
   },

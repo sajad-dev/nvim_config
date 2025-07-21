@@ -4,12 +4,11 @@ require("conform").setup({
     typescript = { "prettier" },
     javascriptreact = { "prettier" },
     typescriptreact = { "prettier" },
-    python = { "black" },
+    python = { "isort","black"},
     php = { "php_cs_fixer" },
     rust = { "rustfmt" },
     go = { "gofmt" },
     c = { "clang-format" },
   },
 
-})
 
