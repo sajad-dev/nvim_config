@@ -11,4 +11,4 @@ require("conform").setup({
     c = { "clang-format" },
   },
 
-
+})
