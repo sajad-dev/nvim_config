@@ -7,7 +7,7 @@ require("conform").setup({
     python = { "isort","black"},
     php = { "php_cs_fixer" },
     rust = { "rustfmt" },
-    go = { "gofmt" },
+    go = { "goimports" },
     c = { "clang-format" },
   },
 

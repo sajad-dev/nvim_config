@@ -9,7 +9,7 @@ local transparent_enabled = true
 
 require("nightfox").setup({
   options = {
-    transparent = true,  -- 👈 فعال کردن شفافیت
+    -- transparent = true,  -- 👈 فعال کردن شفافیت
   }
 })
 
