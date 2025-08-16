@@ -1,7 +1,10 @@
 require('packer').startup(function(use)
   -- Packer (plugin manager)
   use 'wbthomason/packer.nvim'
-
+use {
+  'nvim-treesitter/nvim-treesitter',
+  run = ':TSUpdate'
+}
   -- Snippet engine
   use {
     "L3MON4D3/LuaSnip",

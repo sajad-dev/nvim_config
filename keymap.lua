@@ -1,4 +1,4 @@
-vim.api.nvim_set_keymap('n', 'lp', ':put _<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'lp', ':put _<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 function ToggleTerminal()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
