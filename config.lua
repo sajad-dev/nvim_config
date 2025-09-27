@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 dofile("/home/sajad/Documents/Repositories/nvim_config/packer.lua")
 dofile("/home/sajad/Documents/Repositories/nvim_config/lsp.lua")
 dofile("/home/sajad/Documents/Repositories/nvim_config/nvim-tree.lua")
