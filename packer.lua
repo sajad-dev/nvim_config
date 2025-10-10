@@ -1,119 +1,122 @@
-require('packer').startup(function(use)
-  -- Packer (plugin manager)
-  use 'wbthomason/packer.nvim'
-use {
-  'nvim-treesitter/nvim-treesitter',
-  run = ':TSUpdate'
-}
-  -- Snippet engine
-  use {
-    "L3MON4D3/LuaSnip",
-    tag = "v2.*",
-    run = "make install_jsregexp"
-  }
+require("packer").startup(function(use)
+	-- Packer (plugin manager)
+	use("wbthomason/packer.nvim")
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate"
 
-  -- Mason (LSP/DAP/formatting manager)
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "jay-babu/mason-null-ls.nvim",
-  }
+	})
+	use("windwp/nvim-ts-autotag")
 
-  -- LSP Config
-  use 'neovim/nvim-lspconfig'
+	-- Snippet engine
+	use({
+		"L3MON4D3/LuaSnip",
+		tag = "v2.*",
+		run = "make install_jsregexp",
+	})
 
-  -- Typescript tools (depends on plenary and lspconfig)
-  use {
-    'pmizio/typescript-tools.nvim',
-    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-  }
+	-- Mason (LSP/DAP/formatting manager)
+	use({
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"jay-babu/mason-null-ls.nvim",
+	})
 
-  -- Completion framework and sources
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-      'onsails/lspkind.nvim'
-    }
-  }
+	-- LSP Config
+	use("neovim/nvim-lspconfig")
 
-  -- Treesitter (syntax highlighting and more)
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  }
+	-- Typescript tools (depends on plenary and lspconfig)
+	use({
+		"pmizio/typescript-tools.nvim",
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	})
 
-  -- Null-ls for formatting/linting
-  use {
-    "nvimtools/none-ls.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-  }
+	-- Completion framework and sources
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind.nvim",
+		},
+	})
 
-  -- File explorer and icons
-  use {
-    "nvim-tree/nvim-tree.lua",
-    requires = { "nvim-tree/nvim-web-devicons" }
-  }
+	-- Treesitter (syntax highlighting and more)
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+	})
 
-  -- Autopairs (auto close brackets, quotes, etc)
-  use {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup {}
-    end
-  }
+	-- Null-ls for formatting/linting
+	use({
+		"nvimtools/none-ls.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
 
-  -- UI and notifications
-  use "rcarriga/nvim-notify"
-  use "stevearc/dressing.nvim"
-  use {
-    "kiyoon/jupynium.nvim",
-    run = "pip3 install --user jupytext nbconvert",
-    requires = {
-      "rcarriga/nvim-notify",
-      "stevearc/dressing.nvim",
-    },
-    config = function()
-      require("jupynium").setup({})
-    end,
-  }
+	-- File explorer and icons
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
 
-  -- Color schemes
-  use { "ellisonleao/gruvbox.nvim" }
-  use { 'EdenEast/nightfox.nvim' }
+	-- Autopairs (auto close brackets, quotes, etc)
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 
-  -- REPL integration
-  use {'Vigemus/iron.nvim'}
+	-- UI and notifications
+	use("rcarriga/nvim-notify")
+	use("stevearc/dressing.nvim")
+	use({
+		"kiyoon/jupynium.nvim",
+		run = "pip3 install --user jupytext nbconvert",
+		requires = {
+			"rcarriga/nvim-notify",
+			"stevearc/dressing.nvim",
+		},
+		config = function()
+			require("jupynium").setup({})
+		end,
+	})
 
-  -- Misc vim plugins
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-sensible'
-  use 'vim-airline/vim-airline'
-  use 'tpope/vim-fugitive'
+	-- Color schemes
+	use({ "ellisonleao/gruvbox.nvim" })
+	use({ "EdenEast/nightfox.nvim" })
 
-  -- Telescope (fuzzy finder)
-  use {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+	-- REPL integration
+	use({ "Vigemus/iron.nvim" })
 
-  -- Search and replace UI
-  use {
-    'nvim-pack/nvim-spectre',
-    requires = { 'nvim-lua/plenary.nvim' },
-  }
+	-- Misc vim plugins
+	use("tpope/vim-commentary")
+	use("tpope/vim-sensible")
+	use("vim-airline/vim-airline")
+	use("tpope/vim-fugitive")
 
-  -- Code formatting
-  use {
-    "stevearc/conform.nvim",
-  }
+	-- Telescope (fuzzy finder)
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.5",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-  -- Utility library
-  use 'nvim-lua/plenary.nvim'
+	-- Search and replace UI
+	use({
+		"nvim-pack/nvim-spectre",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
+	-- Code formatting
+	use({
+		"stevearc/conform.nvim",
+	})
+
+	-- Utility library
+	use("nvim-lua/plenary.nvim")
 end)
 

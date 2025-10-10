@@ -1,14 +1,33 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-	ensure_installed = { "gopls", "rust_analyzer", "intelephense", "clangd", "pylsp", "regal", "lua_ls" },
+	ensure_installed = {
+		"gopls",
+		"rust_analyzer",
+		"intelephense",
+		"clangd",
+		"pylsp",
+		"regal",
+		"lua_ls",
+		"html",
+		"cssls",
+	},
 	automatic_installation = true,
 })
 
-local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local servers = { "gopls", "rust_analyzer", "intelephense", "clangd", "pylsp", "regal", "lua_ls" }
+local servers = {
+	"gopls",
+	"rust_analyzer",
+	"intelephense",
+	"clangd",
+	"pylsp",
+	"regal",
+	"lua_ls",
+	"html",
+	"cssls",
+}
 
 local on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -25,24 +44,29 @@ local on_attach = function(client, bufnr)
 end
 
 for _, server in ipairs(servers) do
+	local config = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	}
+
 	if server == "pylsp" then
-		lspconfig[server].setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				pylsp = {
-					plugins = {
-						pycodestyle = { enabled = true, maxLineLength = 100 },
-						pylint = { enabled = false },
-						black = { enabled = true },
-					},
+		config.settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = { enabled = true, maxLineLength = 100 },
+					pylint = { enabled = false },
+					black = { enabled = true },
 				},
 			},
-		})
-	else
-		lspconfig[server].setup({
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
+		}
 	end
+
+	vim.lsp.config[server] = config
+
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = server == "lua_ls" and "lua" or server,
+		callback = function()
+			vim.lsp.start(vim.lsp.config[server])
+		end,
+	})
 end

@@ -10,6 +10,7 @@ dofile("/home/sajad/Documents/Repositories/nvim_config/help.lua")
 dofile("/home/sajad/Documents/Repositories/nvim_config/iron.lua")
 dofile("/home/sajad/Documents/Repositories/nvim_config/jupyter.lua")
 
+
 vim.cmd([[autocmd VimResized * wincmd =]])
 
 

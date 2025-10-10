@@ -10,7 +10,9 @@ require("conform").setup({
 		go = { "goimports" },
 		c = { "clang-format" },
 		json = { "prettier" },
-		rego = { "opa fmt --write" },
+		rego = { "opa", "fmt", "--write" },
 		lua = { "stylua" },
+		html = { "prettier" },
+		css = { "prettier" },
 	},
 })
