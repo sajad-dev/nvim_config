@@ -11,6 +11,8 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"html",
 		"cssls",
+		"laravel_ls",
+		"phpactor"
 	},
 	automatic_installation = true,
 })
@@ -27,6 +29,8 @@ local servers = {
 	"lua_ls",
 	"html",
 	"cssls",
+	"laravel_ls",
+	"phpactor"
 }
 
 local on_attach = function(client, bufnr)

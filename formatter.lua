@@ -5,7 +5,6 @@ require("conform").setup({
 		javascriptreact = { "prettier" },
 		typescriptreact = { "prettier" },
 		python = { "isort", "black" },
-		php = { "php_cs_fixer" },
 		rust = { "rustfmt" },
 		go = { "goimports" },
 		c = { "clang-format" },
@@ -14,5 +13,6 @@ require("conform").setup({
 		lua = { "stylua" },
 		html = { "prettier" },
 		css = { "prettier" },
+		php = { "pint" },
 	},
 })
