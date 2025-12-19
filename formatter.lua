@@ -8,6 +8,7 @@ require("conform").setup({
 		rust = { "rustfmt" },
 		go = { "goimports" },
 		c = { "clang-format" },
+		cpp = { "clang-format" },
 		json = { "prettier" },
 		rego = { "opa", "fmt", "--write" },
 		lua = { "stylua" },

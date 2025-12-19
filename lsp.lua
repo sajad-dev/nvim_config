@@ -12,7 +12,7 @@ require("mason-lspconfig").setup({
 		"html",
 		"cssls",
 		"laravel_ls",
-		"phpactor"
+		"phpactor",
 	},
 	automatic_installation = true,
 })
@@ -30,7 +30,7 @@ local servers = {
 	"html",
 	"cssls",
 	"laravel_ls",
-	"phpactor"
+	"phpactor",
 }
 
 local on_attach = function(client, bufnr)
@@ -60,6 +60,7 @@ for _, server in ipairs(servers) do
 					pycodestyle = { enabled = true, maxLineLength = 100 },
 					pylint = { enabled = false },
 					black = { enabled = true },
+					rope_autoimport = { enabled = true },
 				},
 			},
 		}
